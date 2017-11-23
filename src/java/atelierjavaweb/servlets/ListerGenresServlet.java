@@ -5,40 +5,40 @@
  */
 package atelierjavaweb.servlets;
 
-import atelierjavaweb.entity.Film;
+import atelierjavaweb.entity.Genre;
 import java.io.IOException;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 /**
  *
  * @author Formation
  */
-@WebServlet(name = "ListerFilmServlet", urlPatterns = {"/lister_films"})
-public class ListerFilmServlet extends HttpServlet {
+@WebServlet(name = "ListerGenresServlet", urlPatterns = {"/lister_genres"})
+public class ListerGenresServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
+        // req emis par le navigateur
+        // resp réponse à envoyer
+
+        // Recup genres depuis la BDD
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+
+        Query query = em.createQuery("SELECT g from Genre g");
+        List<Genre> genres = query.getResultList();
         
-        //em.getTransaction().begin();
-        
-        Query query = em.createQuery("SELECT f FROM Film f");
-        List<Film> films = (List<Film>) query.getResultList();
-        
-        req.setAttribute("films1", films);
-        req.getRequestDispatcher("liste_films.jsp").forward(req, resp);
-        
+        req.setAttribute("lgenre", genres);
+
+        req.getRequestDispatcher("lister_genres.jsp").forward(req, resp);
+
     }
-    
 
 }

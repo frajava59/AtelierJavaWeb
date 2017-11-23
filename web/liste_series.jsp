@@ -1,6 +1,6 @@
 <%-- 
-    Document   : liste_films
-    Created on : 22 nov. 2017, 12:07:20
+    Document   : liste_series
+    Created on : 22 nov. 2017, 16:25:36
     Author     : Formation
 --%>
 
@@ -10,16 +10,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Page JSP</title>
+        <title>JSP Page</title>
     </head>
     <body>
         <c:import url="_MENU.jsp">
         </c:import>
-        
-        <h1>Liste des films</h1>
+
+
+         <h1>Liste des series</h1>
         ${test}
-        <c:forEach items="${films1}" var="film">
-            ${film.titre}<br/>
+        <c:forEach items="${ser}" var="s">
+            ${s.titre}<br/>
         </c:forEach>
+
     </body>
 </html>
