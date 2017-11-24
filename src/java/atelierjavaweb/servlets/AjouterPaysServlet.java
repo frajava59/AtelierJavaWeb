@@ -5,42 +5,45 @@
  */
 package atelierjavaweb.servlets;
 
-import atelierjavaweb.entity.Film;
+import atelierjavaweb.entity.Pays;
 import java.io.IOException;
-import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 /**
  *
  * @author Formation
  */
-@WebServlet(name = "ListerFilmServlet", urlPatterns = {"/lister_films"})
-public class ListerFilmServlet extends HttpServlet {
-    
-    
-    
+@WebServlet(name = "AjouterPaysServlet", urlPatterns = {"/ajouter_pays"})
+public class AjouterPaysServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
-        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
-        
-        
-        Query query = em.createQuery("SELECT f FROM Film f");
-        List<Film> films = (List<Film>) query.getResultList();
-        
-        req.setAttribute("films1", films);
-        req.getRequestDispatcher("liste_films.jsp").forward(req, resp);
-        
-    }
-    
+        req.getRequestDispatcher("ajouter_pays.jsp").forward(req, resp);
 
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        Pays p = new Pays();
+        
+        p.setNom(req.getParameter("nom"));
+
+        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+
+        em.getTransaction().begin();
+        em.persist(p);
+        em.getTransaction().commit();
+
+     
+        // envoi vers la servlet
+        resp.sendRedirect("lister_pays");
+
+    }
 }

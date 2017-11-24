@@ -5,42 +5,38 @@
  */
 package atelierjavaweb.servlets;
 
-import atelierjavaweb.entity.Film;
+import atelierjavaweb.entity.Pays;
 import java.io.IOException;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 /**
  *
  * @author Formation
  */
-@WebServlet(name = "ListerFilmServlet", urlPatterns = {"/lister_films"})
-public class ListerFilmServlet extends HttpServlet {
-    
-    
-    
+@WebServlet(name = "ListerPaysServlet", urlPatterns = {"/lister_pays"})
+public class ListerPaysServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
+
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
-        
-        
-        Query query = em.createQuery("SELECT f FROM Film f");
-        List<Film> films = (List<Film>) query.getResultList();
-        
-        req.setAttribute("films1", films);
-        req.getRequestDispatcher("liste_films.jsp").forward(req, resp);
-        
+
+        Query query = em.createQuery("SELECT p FROM Pays p ORDER BY p.nom");
+        List<Pays> pays = (List<Pays>) query.getResultList();
+
+        req.setAttribute("pays", pays);
+        req.getRequestDispatcher("liste_pays.jsp").forward(req, resp);
+
     }
+    
     
 
 }

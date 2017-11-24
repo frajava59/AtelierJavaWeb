@@ -13,16 +13,22 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <c:import url="_MENU.jsp">
+        </c:import>
+        
         <h1>Liste des genres</h1>
         <table>
-            <tbody>
-                <c:forEach items="${lgenre}" var="gg">
-                    <tr>
-                        <td> ${gg.nom}</td>
-                    </tr>
+            <thead>
+            <th>Type</th>
+        </thead>
+        <tbody>
+            <c:forEach items="${lgenre}" var="gg">
+                <tr>
+                    <td> ${gg.nom}</td>
+                </tr>
             </c:forEach>
-            </tbody>
-        </table>
+        </tbody>
+    </table>
 
-    </body>
+</body>
 </html>

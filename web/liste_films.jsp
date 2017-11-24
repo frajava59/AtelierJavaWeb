@@ -15,11 +15,28 @@
     <body>
         <c:import url="_MENU.jsp">
         </c:import>
-        
+
         <h1>Liste des films</h1>
-        ${test}
-        <c:forEach items="${films1}" var="film">
-            ${film.titre}<br/>
-        </c:forEach>
-    </body>
+        <table>
+            <thead>
+            <th>Titre</th>
+            <th>Synopsis</th>
+            <th>Durée</th>
+            <th>Année</th>
+        </thead>
+        <tbody>
+            <c:forEach items="${films1}" var="f">
+                <tr>
+                    <td> ${f.titre}</td>
+                    <td> ${f.synopsis}</td>
+                    <td> ${f.duree}</td>
+                    <td> ${f.annee}</td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+
+
+        
+</body>
 </html>

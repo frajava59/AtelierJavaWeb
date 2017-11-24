@@ -8,11 +8,15 @@
 
 
 <div>
-    
-     <a href="liste_series.jsp">Liste des series</a>
-     <a href="lister_films">Liste des film</a>
-    
-    
-  
-    
+    <!--   pointe vers les servlet-->
+
+    <a href="lister_films">Liste des films</a>
+    <a href="ajouter_film">Ajout d'un film</a>
+    <a href="lister_genres">Liste des genres</a>
+    <a href="lister_pays">Liste des pays</a>
+    <a href="ajouter_pays">Ajout d'un pays</a>
+
+
+
+
 </div>

@@ -32,7 +32,7 @@ public class ListerGenresServlet extends HttpServlet {
         // Recup genres depuis la BDD
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
 
-        Query query = em.createQuery("SELECT g from Genre g");
+        Query query = em.createQuery("SELECT g from Genre g ORDER BY g.nom");
         List<Genre> genres = query.getResultList();
         
         req.setAttribute("lgenre", genres);
