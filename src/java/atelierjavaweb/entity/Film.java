@@ -118,6 +118,14 @@ public class Film implements Serializable {
         return pays;
     }
 
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
     public void setPays(List<Pays> pays) {
         this.pays = pays;
     }

@@ -23,6 +23,8 @@
             <th>Synopsis</th>
             <th>Durée</th>
             <th>Année</th>
+            <th>Genre</th>
+            <th>Pays</th>
         </thead>
         <tbody>
             <c:forEach items="${films1}" var="f">
@@ -31,12 +33,15 @@
                     <td> ${f.synopsis}</td>
                     <td> ${f.duree}</td>
                     <td> ${f.annee}</td>
+                    <td> ${f.genre}</td>
+                    <td> </td>
                 </tr>
             </c:forEach>
         </tbody>
     </table>
 
-
+        <c:import url="_FOOTER.jsp">
+        </c:import>
         
 </body>
 </html>

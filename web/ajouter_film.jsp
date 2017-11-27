@@ -13,12 +13,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-    <c:import url="_MENU.jsp">
+        <c:import url="_MENU.jsp">
         </c:import>
-        
-        
+
+
         <h1>Nouveau film</h1>
-        
+
         <form method="post">
             <label>Titre</label>
             <input name="titre" />
@@ -35,15 +35,23 @@
             <label>Pays</label>
             <select name="selpays">
                 <c:forEach items="${pays}" var="p">
-                    <option value="${p.nom}">${p.nom}</option>
+                    <option value="${p.id}">${p.nom}</option>
+                </c:forEach>
+            </select>
+            <br>
+            <label>Genre</label>
+            <select name="genre_id">
+                <c:forEach items="${genres}" var="g">
+                    <option  value="${g.id}">${g.nom}</option>
                 </c:forEach>
             </select>
             <br>
             <input type="submit" value="Enregistrer" />
-            
+
         </form>
-        
-        
-        
+
+        <c:import url="_FOOTER.jsp">
+        </c:import>
+
     </body>
 </html>

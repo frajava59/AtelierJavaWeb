@@ -15,6 +15,7 @@
     <a href="lister_genres">Liste des genres</a>
     <a href="lister_pays">Liste des pays</a>
     <a href="ajouter_pays">Ajout d'un pays</a>
+    <a href="connexion">Connexion</a>
 
 
 

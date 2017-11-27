@@ -35,7 +35,8 @@
 </table>
 
 
-
+        <c:import url="_FOOTER.jsp">
+        </c:import>
 
 </body>
 </html>

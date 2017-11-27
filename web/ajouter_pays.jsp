@@ -4,6 +4,7 @@
     Author     : Formation
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,7 +17,7 @@
     </c:import>
 
 
-    <h1>AJout d'un nouveau pays</h1>
+    <h1>Ajout d'un nouveau pays</h1>
 
     <form method="post">
         <label>Nom du pays </label>
@@ -24,6 +25,9 @@
         <br>
         <input type="submit" value="Enregistrer" />
     </form>
+    
+            <c:import url="_FOOTER.jsp">
+        </c:import>
 
 </body>
 </html>
